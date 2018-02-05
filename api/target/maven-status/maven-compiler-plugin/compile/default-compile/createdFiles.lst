@@ -1,0 +1,6 @@
+annotations\Inject.class
+annotations\CDIBehavior.class
+annotations\Prefered.class
+annotations\Alternative.class
+annotations\Singleton.class
+annotations\Qualifier.class

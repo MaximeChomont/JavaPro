@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JavaProject.iml" filepath="$PROJECT_DIR$/JavaProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apiIMPLEMENTATION/apiIMPLEMENTATION.iml" filepath="$PROJECT_DIR$/apiIMPLEMENTATION/apiIMPLEMENTATION.iml" />
+      <module fileurl="file://$PROJECT_DIR$/logModule/logModule.iml" filepath="$PROJECT_DIR$/logModule/logModule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/transactionnalModule/transactionnalModule.iml" filepath="$PROJECT_DIR$/transactionnalModule/transactionnalModule.iml" />
+    </modules>
+  </component>
+</project>
