@@ -26,4 +26,7 @@ public class InjectTest {
     public void testInjectionFailure() {
         Assert.assertNull(personne2);
     }
+
+    //Si pas d'implémentation
+    //Si trop d'implémentation et pas de @prefered
 }

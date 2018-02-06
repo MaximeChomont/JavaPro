@@ -1,7 +1,7 @@
 import inject.annotations.Inject;
-import inject.annotations.Prefered;
 import inject.IOC;
-import modele.Personne.impl.PersonnePrefered;
+import modele.Group.impl.Group;
+import modele.Group.inter.IGroup;
 import modele.Personne.inter.IPersonne;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,19 +9,17 @@ import org.junit.Test;
 
 public class PreferedTest {
     @Inject
-    @Prefered
-    IPersonne personne;
-
-    @Inject
-    IPersonne personne2;
+    IGroup group;
 
     @Before
     public void setUp() throws Exception {
         IOC.inject(this);
     }
 
+    //On test que le group @prefered soit  bien injecté
     @Test
     public void testPreferedSuccess() {
-        Assert.assertEquals(personne.getClass(), PersonnePrefered.class);
+        Assert.assertNotNull(group);
+        Assert.assertEquals(group.getClass(), Group.class);
     }
 }

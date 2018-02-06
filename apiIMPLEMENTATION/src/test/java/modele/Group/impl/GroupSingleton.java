@@ -2,8 +2,9 @@ package modele.Group.impl;
 
 import inject.annotations.Prefered;
 import inject.annotations.Singleton;
+import inject.annotations.SingletonQualifier;
 
-@Prefered
 @Singleton
+@SingletonQualifier
 public class GroupSingleton {
 }

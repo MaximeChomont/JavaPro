@@ -1,8 +1,8 @@
 package modele.Group.impl;
 
-import inject.annotations.Alternative;
+import inject.annotations.Prefered;
 import modele.Group.inter.IGroup;
 
-@Alternative
+@Prefered
 public class Group implements IGroup {
 }
