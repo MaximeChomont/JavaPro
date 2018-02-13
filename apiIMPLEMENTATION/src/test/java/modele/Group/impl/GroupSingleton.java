@@ -7,4 +7,7 @@ import inject.annotations.SingletonQualifier;
 @Singleton
 @SingletonQualifier
 public class GroupSingleton {
+
+    public GroupSingleton() {
+    }
 }

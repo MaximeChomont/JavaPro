@@ -5,4 +5,6 @@ import modele.Group.inter.IGroup;
 
 @Prefered
 public class Group implements IGroup {
+    public Group() {
+    }
 }
