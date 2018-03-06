@@ -18,4 +18,8 @@ public class BeanInvocationHandler implements InvocationHandler {
         Invocation invocation = new Invocation(bean, interceptors, method, args);
         return invocation.nextInterceptor();
     }
+
+    public Object getBean() {
+        return bean;
+    }
 }

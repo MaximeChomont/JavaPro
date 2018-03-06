@@ -1,3 +1,4 @@
+import impl.BeanInvocationHandler;
 import inject.annotations.Inject;
 import inject.IOC;
 import modele.Group.impl.Group;
@@ -6,6 +7,8 @@ import modele.Personne.inter.IPersonne;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.lang.reflect.Proxy;
 
 public class PreferedTest {
     @Inject
@@ -20,6 +23,6 @@ public class PreferedTest {
     @Test
     public void testPreferedSuccess() {
         Assert.assertNotNull(group);
-        Assert.assertEquals(group.getClass(), Group.class);
+        Assert.assertEquals(((BeanInvocationHandler)Proxy.getInvocationHandler(group)).getBean().getClass(), Group.class);
     }
 }
