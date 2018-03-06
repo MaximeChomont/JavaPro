@@ -1,3 +1,5 @@
+package impl;
+
 import inject.annotations.interceptor.ICDIInterceptor;
 import inject.inter.IInvocation;
 

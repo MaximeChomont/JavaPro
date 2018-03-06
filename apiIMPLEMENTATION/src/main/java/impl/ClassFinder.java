@@ -1,4 +1,9 @@
+package impl;
+
 import inject.annotations.Prefered;
+import inject.exception.ManyImplementationFoundException;
+import inject.exception.ManyPreferedImplementationFoundException;
+import inject.exception.NoImplementationFoundException;
 import org.reflections.Reflections;
 
 import java.util.Set;
@@ -25,7 +30,7 @@ public class ClassFinder {
             }
         }
         if(nbPreferedImpl > 1){
-
+            throw new ManyPreferedImplementationFoundException();
         }
         return result;
     }
@@ -35,10 +40,10 @@ public class ClassFinder {
             if (implementations.size() == 1) {
                 result = implementations.iterator().next();
             } else {
-
+                throw new ManyImplementationFoundException();
             }
         } else {
-
+                throw new NoImplementationFoundException();
         }
         return result;
     }

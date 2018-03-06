@@ -1,4 +1,5 @@
-import inject.annotations.CDIBehavior;
+package impl;
+
 import inject.annotations.interceptor.ICDIInterceptor;
 import inject.inter.IInjectionSystem;
 import org.reflections.Reflections;
@@ -11,18 +12,23 @@ import java.util.*;
 public class MyContainer {
     private Map<Class<?>, Class<?>> registry;
     private List<ICDIInterceptor> interceptors;
-    private IInjectionSystem injectionSystem;
     private Reflections reflection;
+    private static MyContainer myContainerInstance = null;
 
-    public MyContainer(IInjectionSystem injectionSystem) {
-        this.reflection = new Reflections( ClasspathHelper.forClass(Object.class),
-                new SubTypesScanner(false));
+    private MyContainer() {
+        this.reflection = new Reflections( ClasspathHelper.forClass(Object.class), new SubTypesScanner(false));
         this.registry = new HashMap<Class<?>, Class<?>>();
         this.interceptors = new ArrayList<ICDIInterceptor>();
         for(Object object : this.reflection.getSubTypesOf(ICDIInterceptor.class)){
              this.interceptors.add((ICDIInterceptor) object);
         }
-        this.injectionSystem = injectionSystem;
+    }
+
+    public static MyContainer getMyContainerInstance() {
+        if(myContainerInstance == null) {
+            myContainerInstance = new MyContainer();
+        }
+        return myContainerInstance;
     }
 
     public <T> MyContainer register(Class<? extends T> impl, Class<T> iface) {
@@ -32,13 +38,15 @@ public class MyContainer {
 
     public <T> T createBean(Class<T> iface) {
         try {
-            Class<? extends T> impl = (Class<? extends T>) registry.get(iface);
-            if(impl == null){
+            Class<? extends T> impl;
+            if(registry.containsKey(iface)){
+                impl = (Class<? extends T>) registry.get(iface);
+            } else {
                 impl = ClassFinder.search(iface, reflection);
                 registry.put(iface,impl);
             }
             BeanInvocationHandler handler = new BeanInvocationHandler(
-                    InstanceFactory.create(impl,injectionSystem), interceptors.toArray(new ICDIInterceptor[]{}));
+                    InstanceFactory.create(impl), interceptors.toArray(new ICDIInterceptor[]{}));
             return (T) Proxy.newProxyInstance(
                     Thread.currentThread().getContextClassLoader(),
                     new Class[] {iface},

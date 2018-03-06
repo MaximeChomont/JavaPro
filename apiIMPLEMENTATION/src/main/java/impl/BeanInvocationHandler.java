@@ -1,3 +1,5 @@
+package impl;
+
 import inject.annotations.interceptor.ICDIInterceptor;
 
 import java.lang.reflect.InvocationHandler;
