@@ -11,5 +11,13 @@
     <groupId>api</groupId>
     <artifactId>api</artifactId>
     <version>1.0</version>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.11</version>
+        </dependency>
+    </dependencies>
 
 </project>
