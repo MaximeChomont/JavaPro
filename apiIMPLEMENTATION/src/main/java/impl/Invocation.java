@@ -34,7 +34,9 @@ public class Invocation implements IInvocation {
     public Object nextInterceptor() {
         try {
             return interceptors[index++].invoke(this);
-        } finally {
+        } catch(Exception e) {
+            return null;
+        } finally{
             index--;
         }
     }

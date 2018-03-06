@@ -1,9 +1,10 @@
 package modele.Cascade.impl;
 
 import inject.annotations.Inject;
+import modele.Cascade.inter.ICascade;
 import modele.Personne.inter.IPersonne;
 
-public class MyCascade {
+public class MyCascade implements ICascade{
     @Inject
     IPersonne personne;
 

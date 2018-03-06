@@ -15,7 +15,7 @@ public class ClassFinder {
             Set<Class<? extends T>> implementations =  reflection.getSubTypesOf(classToSearch);
             result = managePrefered(implementations);
             if(result == null){
-                manageInject(implementations);
+                result = manageInject(implementations);
             }
         }
         return  result;

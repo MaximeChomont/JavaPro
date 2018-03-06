@@ -16,7 +16,7 @@ public class MyContainer {
     private static MyContainer myContainerInstance = null;
 
     private MyContainer() {
-        this.reflection = new Reflections( ClasspathHelper.forClass(Object.class), new SubTypesScanner(false));
+        this.reflection = new Reflections("");
         this.registry = new HashMap<Class<?>, Class<?>>();
         this.interceptors = new ArrayList<ICDIInterceptor>();
         for(Object object : this.reflection.getSubTypesOf(ICDIInterceptor.class)){
