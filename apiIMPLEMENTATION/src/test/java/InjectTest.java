@@ -1,6 +1,6 @@
 import inject.annotations.Inject;
 import inject.IOC;
-import modele.Group.impl.GroupCascade;
+import modele.Cascade.inter.ICascade;
 import modele.Personne.inter.IPersonne;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +14,7 @@ public class InjectTest {
     IPersonne personne2;
 
     @Inject
-    GroupCascade groupCascade;
+    ICascade myCascade;
 
     @Before
     public void setUp() throws Exception {
@@ -32,7 +32,10 @@ public class InjectTest {
     }
 
     @Test
-    public void testCascade() { Assert.assertNotNull(groupCascade.getGroup());}
+    public void testCascade() {
+        Assert.assertNotNull(myCascade);
+        Assert.assertNotNull(myCascade.getPersonne());
+    }
 
     //Si pas d'implémentation
     //Si trop d'implémentation et pas de @prefered
