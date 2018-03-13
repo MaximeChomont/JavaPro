@@ -16,6 +16,11 @@
             <artifactId>api</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>apiIMPLEMENTATION</groupId>
+            <artifactId>apiIMPLEMENTATION</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

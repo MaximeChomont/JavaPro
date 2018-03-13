@@ -31,11 +31,13 @@ public class LoggerTest implements ILogger{
     @Override
     public void before() {
         beforeWorked = true;
+        System.out.println("Before");
     }
 
     @Override
     public void after() {
         afterWorked  = true;
+        System.out.println("After");
     }
 
     public void initialiseLogger(){

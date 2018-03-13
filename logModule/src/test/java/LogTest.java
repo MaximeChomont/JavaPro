@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.annotation.Annotation;
+
 public class LogTest {
     @Inject
     ILogger logger;
@@ -22,6 +24,9 @@ public class LogTest {
     @Test
     public void testLogSuccess() {
         logClassTest.logMethod();
+        Class cls = logClassTest.getClass();
+        Annotation[] annotations = cls.getAnnotations();
+        Annotation[] annotations2 = cls.getDeclaredAnnotations();
         Assert.assertTrue(LoggerTest.isBeforeWorked());
         Assert.assertTrue(LoggerTest.isAfterWorked());
     }

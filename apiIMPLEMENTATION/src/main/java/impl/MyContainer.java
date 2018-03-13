@@ -1,5 +1,6 @@
 package impl;
 
+import inject.IOC;
 import inject.annotations.interceptor.ICDIInterceptor;
 import inject.inter.IInjectionSystem;
 import org.reflections.Reflections;
@@ -19,14 +20,27 @@ public class MyContainer {
         this.reflection = new Reflections("");
         this.registry = new HashMap<Class<?>, Class<?>>();
         this.interceptors = new ArrayList<ICDIInterceptor>();
-        for(Object object : this.reflection.getSubTypesOf(ICDIInterceptor.class)){
-             this.interceptors.add((ICDIInterceptor) object);
-        }
+
     }
 
     public static MyContainer getMyContainerInstance() {
         if(myContainerInstance == null) {
             myContainerInstance = new MyContainer();
+            try {
+                for(Class<? extends ICDIInterceptor> object : myContainerInstance.reflection.getSubTypesOf(ICDIInterceptor.class)){
+                    if(object.equals(BeanInterceptor.class)) {
+                        myContainerInstance.interceptors.add((ICDIInterceptor) object.newInstance());
+                    } else {
+                        myContainerInstance.interceptors.add(0,(ICDIInterceptor) object.newInstance());
+                    }
+
+                }
+                for (ICDIInterceptor o : myContainerInstance.interceptors) {
+                    IOC.inject(o);
+                }
+            } catch (Exception e){
+
+            }
         }
         return myContainerInstance;
     }

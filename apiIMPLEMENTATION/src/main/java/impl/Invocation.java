@@ -19,23 +19,24 @@ public class Invocation implements IInvocation {
         this.args = args;
     }
 
+    @Override
     public Object getBean() {
         return bean;
     }
 
+    @Override
     public Method getMethod() {
         return method;
     }
-
+    @Override
     public Object[] getArgs() {
         return args;
     }
 
+    @Override
     public Object nextInterceptor() {
         try {
             return interceptors[index++].invoke(this);
-        } catch(Exception e) {
-            return null;
         } finally{
             index--;
         }
